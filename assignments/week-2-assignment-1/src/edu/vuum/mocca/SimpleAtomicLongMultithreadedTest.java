@@ -206,6 +206,7 @@ public class SimpleAtomicLongMultithreadedTest {
                      mCounter.get());
     }
 	
+
     /**
      * Tests for proper concurrency and functionality of {@code
      * decrementAndGet()}.
