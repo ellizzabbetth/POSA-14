@@ -109,3 +109,10 @@ looks like the semaphore acquire() method isn't "fair".  The key is
 not to have runtime exceptions, i.e., you want only "green-check
 marks" in the JUnit view output!
 
+
+
+Elizabeth's notes
+-----------------------------------------
+
+To increase the fairness of waiting threads first we will change the code block to be guarded by a lock rather than a synchronized block:
+
