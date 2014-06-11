@@ -47,6 +47,7 @@ public class AndroidPlatformStrategy extends PlatformStrategy
     {
         /** Reset the CountDownLatch. */
         // TODO - You fill in here.
+    	mLatch = new CountDownLatch();
     }
 
     /** Print the outputString to the display. */
@@ -57,18 +58,25 @@ public class AndroidPlatformStrategy extends PlatformStrategy
          * and appends the outputString to a TextView. 
          */
         // TODO - You fill in here.
+    	activity.runOnUiThread(new Runnable(){
+    		public void run() {
+    		mTextViewOutput.append(outputString + "\n");
+    	}});
+    	
     }
 
     /** Indicate that a game thread has finished running. */
     public void done()
     {	
         // TODO - You fill in here.
+    	mLatch.countDown();
     }
 
     /** Barrier that waits for all the game threads to finish. */
     public void awaitDone()
     {
         // TODO - You fill in here.
+    	mLatch.await();
     }
 
     /** Returns the platform name in a String. */
